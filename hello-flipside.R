@@ -1,18 +1,20 @@
 library(shroomDK)
 library(dplyr)
 library(plotly)
+library(readr)
 
 # Always gitignore your API Key
 
-thales_settled_df = pd.read_csv('thales_settled_prices.csv')
-eth_prices_df = pd.read_csv('eth_dex_prices.csv')
+thales_settled_df = read_csv('thales_settled_prices.csv')
+eth_prices_df = read_csv('eth_dex_prices.csv')
+
 # Create a candlestick chart
 candlestick_chart <- plot_ly(data = eth_prices_df, type = "candlestick",
-                             x = ~hour_,
-                             open = ~open,
-                             high = ~high,
-                             low = ~low,
-                             close = ~close
+                             x = ~HOUR_,
+                             open = ~OPEN,
+                             high = ~HIGH,
+                             low = ~LOW,
+                             close = ~CLOSE
 ) %>%
   layout(
     title = "Candlestick Chart",
